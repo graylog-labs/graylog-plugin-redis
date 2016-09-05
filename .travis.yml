@@ -9,8 +9,6 @@ addons:
       - rpm
 services:
   - docker
-before_script:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
   - mvn test verify -Dmaven.javadoc.skip=true -B -V
 before_deploy:
