@@ -1,6 +1,7 @@
 # Redis Plugin for Graylog
 
-[![Github Releases](https://img.shields.io/github/downloads/Graylog2/graylog-plugin-redis/latest/total.svg)](https://github.com/Graylog2/graylog-plugin-redis/releases)
+[![Github Downloads](https://img.shields.io/github/downloads/Graylog2/graylog-plugin-redis/total.svg)](https://github.com/Graylog2/graylog-plugin-redis/releases)
+[![GitHub Release](https://img.shields.io/github/release/Graylog2/graylog-plugin-redis.svg)](https://github.com/Graylog2/graylog-plugin-redis/releases)
 [![Build Status](https://travis-ci.org/Graylog2/graylog-plugin-redis.svg?branch=master)](https://travis-ci.org/Graylog2/graylog-plugin-redis)
 
 **Required Graylog version:** 2.2.0 and later
