@@ -18,6 +18,7 @@ package org.graylog.plugins.redis;
 
 import org.graylog.plugins.redis.inputs.GELFRedisInput;
 import org.graylog.plugins.redis.inputs.RawRedisInput;
+import org.graylog.plugins.redis.inputs.SyslogRedisInput;
 import org.graylog.plugins.redis.outputs.GELFRedisOutput;
 import org.graylog.plugins.redis.transports.RedisTransport;
 import org.graylog2.plugin.PluginConfigBean;
@@ -38,6 +39,7 @@ public class RedisModule extends PluginModule {
 
         addMessageInput(GELFRedisInput.class);
         addMessageInput(RawRedisInput.class);
+        addMessageInput(SyslogRedisInput.class);
 
         addMessageOutput(GELFRedisOutput.class);
     }

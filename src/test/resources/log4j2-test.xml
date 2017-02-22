@@ -7,7 +7,8 @@
     </Appenders>
     <Loggers>
         <Logger name="org.graylog2" level="info"/>
-        <Logger name="org.graylog.plugins.redis" level="debug"/>
+        <!--Logger name="org.graylog.plugins.redis" level="debug"/-->
+        <Logger name="org.graylog.plugins.redis.shaded" level="warn"/>
         <Root level="warn">
             <AppenderRef ref="STDOUT"/>
         </Root>

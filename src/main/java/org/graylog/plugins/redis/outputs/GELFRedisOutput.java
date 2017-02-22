@@ -21,9 +21,10 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.inject.assistedinject.Assisted;
 import com.lambdaworks.redis.RedisClient;
-import com.lambdaworks.redis.RedisURI;
 import com.lambdaworks.redis.codec.ByteArrayCodec;
 import com.lambdaworks.redis.pubsub.api.sync.RedisPubSubCommands;
+import org.graylog.plugins.redis.internal.RedisClientBuilder;
+import org.graylog.plugins.redis.internal.RedisClientConfiguration;
 import org.graylog2.plugin.Message;
 import org.graylog2.plugin.ServerStatus;
 import org.graylog2.plugin.Tools;
@@ -56,7 +57,6 @@ import static java.util.Objects.requireNonNull;
 public class GELFRedisOutput implements MessageOutput {
     private static final Logger LOG = LoggerFactory.getLogger(GELFRedisOutput.class);
 
-    private static final String CK_REDIS_URI = "redis_uri";
     private static final String CK_CHANNEL = "redis_channel";
 
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
@@ -70,18 +70,11 @@ public class GELFRedisOutput implements MessageOutput {
     @Inject
     public GELFRedisOutput(@Assisted Configuration configuration, ServerStatus serverStatus) throws MessageOutputConfigurationException {
         this(
-                buildRedisClient(configuration),
+                new RedisClientBuilder(configuration).buildClient(),
                 configuration.getString(CK_CHANNEL, "graylog"),
                 serverStatus.getNodeId().toString(),
                 serverStatus.getClusterId()
         );
-    }
-
-    private static RedisClient buildRedisClient(Configuration configuration) {
-        final String redisURIString = configuration.getString(CK_REDIS_URI, "redis://127.0.0.1/");
-        final RedisURI redisURI = RedisURI.create(redisURIString);
-
-        return RedisClient.create(redisURI);
     }
 
     @VisibleForTesting
@@ -237,21 +230,12 @@ public class GELFRedisOutput implements MessageOutput {
     public static class Config extends MessageOutput.Config {
         @Override
         public ConfigurationRequest getRequestedConfiguration() {
-            final ConfigurationRequest r = super.getRequestedConfiguration();
-
-            r.addField(new TextField(
-                    CK_REDIS_URI,
-                    "Redis URI",
-                    "redis://localhost",
-                    "URI of the Redis server: redis://[password@]host[:port][/databaseNumber]",
-                    ConfigurationField.Optional.NOT_OPTIONAL));
-            r.addField(new TextField(
-                    CK_CHANNEL,
+            final RedisClientConfiguration r = new RedisClientConfiguration(super.getRequestedConfiguration());
+            r.addField(new TextField(CK_CHANNEL,
                     "Channel",
                     "",
                     "Name of the channel to publish messages to",
                     ConfigurationField.Optional.NOT_OPTIONAL));
-
             return r;
         }
     }

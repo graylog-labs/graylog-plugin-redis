@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Graylog2/graylog-plugin-redis.svg?branch=master)](https://travis-ci.org/Graylog2/graylog-plugin-redis)
 
-**Required Graylog version:** 2.0.0 and later
+**Required Graylog version:** 2.2.0 and later
 
 This plugin provides inputs and outputs for the [Redis protocol](http://redis.io/) in Graylog which can be used to consume data from Redis.
 
@@ -40,7 +40,7 @@ Travis CI will build the release artifacts and upload to GitHub automatically.
 
 ## License
 
-Copyright (c) 2016 Graylog, Inc.
+Copyright (c) 2016-2017 Graylog, Inc.
 
 This library is licensed under the GNU General Public License, Version 3.0.
 

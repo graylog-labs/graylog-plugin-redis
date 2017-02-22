@@ -21,6 +21,7 @@ import com.google.common.eventbus.EventBus;
 import com.lambdaworks.redis.RedisClient;
 import com.lambdaworks.redis.RedisURI;
 import com.lambdaworks.redis.pubsub.StatefulRedisPubSubConnection;
+import com.lambdaworks.redis.pubsub.api.sync.RedisPubSubCommands;
 import org.graylog2.plugin.LocalMetricRegistry;
 import org.graylog2.plugin.configuration.Configuration;
 import org.graylog2.plugin.inputs.MessageInput;
@@ -71,11 +72,15 @@ public class RedisTransportIT {
         final MessageInput messageInput = mock(MessageInput.class);
         redisTransport.launch(messageInput);
 
-        pubSub.sync().publish("graylog", "TEST");
+        final RedisPubSubCommands<String, String> commands = pubSub.sync();
+        final int numMessages = 100;
+        for (int i = 0; i < numMessages; i++) {
+            commands.publish("graylog", "TEST-" + i);
+        }
 
         Thread.sleep(100L);
 
-        verify(messageInput, times(1)).processRawMessage(any(RawMessage.class));
+        verify(messageInput, times(numMessages)).processRawMessage(any(RawMessage.class));
 
         redisTransport.stop();
     }
@@ -98,11 +103,14 @@ public class RedisTransportIT {
         final MessageInput messageInput = mock(MessageInput.class);
         redisTransport.launch(messageInput);
 
-        pubSub.sync().publish("graylog", "TEST");
-
+        final RedisPubSubCommands<String, String> commands = pubSub.sync();
+        final int numMessages = 100;
+        for (int i = 0; i < numMessages; i++) {
+            commands.publish("graylog", "TEST-" + i);
+        }
         Thread.sleep(100L);
 
-        verify(messageInput, times(1)).processRawMessage(any(RawMessage.class));
+        verify(messageInput, times(numMessages)).processRawMessage(any(RawMessage.class));
 
         redisTransport.stop();
     }

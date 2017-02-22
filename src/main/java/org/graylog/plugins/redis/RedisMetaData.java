@@ -25,6 +25,8 @@ import java.util.Collections;
 import java.util.Set;
 
 public class RedisMetaData implements PluginMetaData {
+    private static final String PLUGIN_PROPERTIES = "org.graylog.plugins.graylog-plugin-redis/graylog-plugin.properties";
+
     @Override
     public String getUniqueId() {
         return RedisPlugin.class.getCanonicalName();
@@ -32,7 +34,7 @@ public class RedisMetaData implements PluginMetaData {
 
     @Override
     public String getName() {
-        return "Redis input plugin";
+        return "Redis Plugin";
     }
 
     @Override
@@ -42,23 +44,22 @@ public class RedisMetaData implements PluginMetaData {
 
     @Override
     public URI getURL() {
-        return URI.create("https://www.graylog.org/");
+        return URI.create("https://github.com/Graylog2/graylog-plugin-redis");
     }
 
     @Override
     public Version getVersion() {
-        return Version.from(1, 0, 0);
+        return Version.fromPluginProperties(getClass(), PLUGIN_PROPERTIES, "version", Version.from(1, 0, 0));
     }
 
     @Override
     public String getDescription() {
-        // TODO Insert correct plugin description
-        return "Description of Redis plugin";
+        return "Graylog Redis input/output plugin";
     }
 
     @Override
     public Version getRequiredVersion() {
-        return Version.from(1, 1, 0);
+        return Version.fromPluginProperties(getClass(), PLUGIN_PROPERTIES, "graylog.version", Version.from(2, 2, 0));
     }
 
     @Override
