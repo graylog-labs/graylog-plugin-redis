@@ -28,6 +28,7 @@ import org.graylog2.plugin.outputs.MessageOutputConfigurationException;
 import org.graylog2.plugin.system.NodeId;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -77,6 +78,11 @@ public class GELFRedisOutputIT {
         output = new GELFRedisOutput(configuration, serverStatus);
 
         assumeTrue(output.isRunning());
+    }
+
+    @After
+    public void tearDown() {
+        output.stop();
     }
 
     @Test

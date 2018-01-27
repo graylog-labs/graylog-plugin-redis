@@ -31,7 +31,11 @@ public class BasicRedisIT {
         final RedisURI redisURI = RedisURI.create(REDIS_HOST, REDIS_PORT);
         final RedisClient client = RedisClient.create(redisURI);
 
-        final String ping = client.connect().sync().ping();
-        assertThat(ping).isEqualTo("PONG");
+        try {
+            final String ping = client.connect().sync().ping();
+            assertThat(ping).isEqualTo("PONG");
+        } finally {
+            client.shutdown();
+        }
     }
 }
