@@ -34,7 +34,7 @@
         <maven.site.skip>true</maven.site.skip>
 
         <graylog.version>2.4.0</graylog.version>
-        <redis.image>redis:3-alpine</redis.image>
+        <redis.image>redis:4-alpine</redis.image>
         <redis.port>6379</redis.port>
     </properties>
 
