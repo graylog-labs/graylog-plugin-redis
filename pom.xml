@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.graylog.plugins</groupId>
         <artifactId>graylog-plugin-parent</artifactId>
-        <version>2.2.0</version>
+        <version>2.4.0</version>
     </parent>
 
     <artifactId>graylog-plugin-redis</artifactId>
@@ -33,7 +33,7 @@
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.site.skip>true</maven.site.skip>
 
-        <graylog.version>2.2.0</graylog.version>
+        <graylog.version>2.4.0</graylog.version>
         <redis.image>redis:3-alpine</redis.image>
         <redis.port>6379</redis.port>
     </properties>
