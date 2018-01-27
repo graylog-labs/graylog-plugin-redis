@@ -1,8 +1,8 @@
 # Redis Plugin for Graylog
 
-[![Github Downloads](https://img.shields.io/github/downloads/Graylog2/graylog-plugin-redis/total.svg)](https://github.com/Graylog2/graylog-plugin-redis/releases)
-[![GitHub Release](https://img.shields.io/github/release/Graylog2/graylog-plugin-redis.svg)](https://github.com/Graylog2/graylog-plugin-redis/releases)
-[![Build Status](https://travis-ci.org/Graylog2/graylog-plugin-redis.svg?branch=master)](https://travis-ci.org/Graylog2/graylog-plugin-redis)
+[![Github Downloads](https://img.shields.io/github/downloads/graylog-labs/graylog-plugin-redis/total.svg)](https://github.com/graylog-labs/graylog-plugin-redis/releases)
+[![GitHub Release](https://img.shields.io/github/release/graylog-labs/graylog-plugin-redis.svg)](https://github.com/graylog-labs/graylog-plugin-redis/releases)
+[![Build Status](https://travis-ci.org/graylog-labs/graylog-plugin-redis.svg?branch=master)](https://travis-ci.org/graylog-labs/graylog-plugin-redis)
 
 **Required Graylog version:** 2.2.0 and later
 
@@ -11,7 +11,7 @@ This plugin provides inputs and outputs for the [Redis protocol](http://redis.io
 
 ## Installation
 
-[Download the plugin](https://github.com/Graylog2/graylog-plugin-redis/releases) and place the JAR file in your Graylog plugin directory.
+[Download the plugin](https://github.com/graylog-labs/graylog-plugin-redis/releases) and place the JAR file in your Graylog plugin directory.
 By default the plugin directory is the `plugins/` directory relative to your Graylog installation directory and can be configured in your `graylog.conf` file.
 
 Restart Graylog and you are done.

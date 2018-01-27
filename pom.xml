@@ -20,9 +20,9 @@
     <url>https://www.graylog.org</url>
 
     <scm>
-        <connection>scm:git:git@github.com:Graylog2/graylog-plugin-redis.git</connection>
-        <developerConnection>scm:git:git@github.com:Graylog2/graylog-plugin-redis.git</developerConnection>
-        <url>https://github.com/Graylog2/graylog-plugin-redis</url>
+        <connection>scm:git:git@github.com:graylog-labs/graylog-plugin-redis.git</connection>
+        <developerConnection>scm:git:git@github.com:graylog-labs/graylog-plugin-redis.git</developerConnection>
+        <url>https://github.com/graylog-labs/graylog-plugin-redis</url>
         <tag>HEAD</tag>
     </scm>
 
